@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Property Odisha - Real Estate Landing Page</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+
+  <!-- AOS Library -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            'brand-gold': '#e2d18d',
+            'brand-blue': '#99a4d4',
+            'brand-dark': '#0a1846',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style type="text/tailwindcss">
+  
+      @layer utilities {
+        .animate-pulse {
+          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+    
+        .animate-drop-bounce {
+          animation: dropBounce 2s ease-in-out infinite;
+        }
+    
+        .text-shadow {
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+    
+        .hover-scale {
+          transition: transform 0.3s ease;
+        }
+    
+        .hover-scale:hover {
+          transform: scale(1.05);
+        }
+      }
+    
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
+    
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+    
+      @keyframes dropBounce {
+        0% { transform: translateY(0); }
+        25% { transform: translateY(10px); }
+        50% { transform: translateY(0); }
+        75% { transform: translateY(10px); }
+        100% { transform: translateY(0); }
+      }
+    </style>
+    
+</head>
+<body class="font-sans">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full flex justify-between items-center px-4 sm:px-6 md:px-8 py-2 sm:py-3 z-50 text-white"
+  style="background: linear-gradient(to right, #e2d18d, #99a4d4);">
+    <!-- City Dropdown -->
+    <!-- City Dropdown -->
+    <div class="relative group">
+      <button onclick="toggleCityDropdown()" class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-amber-300 text-gray-900 rounded-md shadow-md hover:bg-amber-400 transition-all duration-300 font-medium text-sm">
+        <i class="fas fa-map-marker-alt"></i> <span class="hidden sm:inline">Select your city</span>
+        <i class="fas fa-chevron-down text-xs"></i>
+      </button>
+      <div id="cityDropdown" class="hidden absolute top-full left-0 mt-2 w-48 rounded-md shadow-lg overflow-y-auto max-h-60 z-50 bg-white border border-gray-200">
+        <ul class="py-1">
+          <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-800 border-b border-gray-100">Bhubaneswar</li>
+          <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-800 border-b border-gray-100">Cuttack</li>
+          <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-800 border-b border-gray-100">Sambalpur</li>
+          <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-800 border-b border-gray-100">Rourkela</li>
+          <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-800 border-b border-gray-100">Puri</li>
+          <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-800 border-b border-gray-100">Berhampur</li>
+          <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-800 border-b border-gray-100">Balasore</li>
+          <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-800 border-b border-gray-100">Angul</li>
+          <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-800 border-b border-gray-100">Jharsuguda</li>
+          <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-800 border-b border-gray-100">Rayagada</li>
+          <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-800 border-b border-gray-100">Baripada</li>
+          <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-800 border-b border-gray-100">Jeypore</li>
+          <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-800">Paralakhemundi</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Logo -->
+    <div class="flex items-center text-white text-lg sm:text-xl font-bold">
+      <img src="logo.jpg" alt="Pi Logo" class="mr-2 w-12 h-12 sm:w-12 sm:h-12 rounded-full shadow-md">
+      <span class="hidden xs:inline text-shadow">property odisha</span>
+    </div>
+
+    <!-- Hamburger Nav -->
+    <div class="relative">
+      <button onclick="toggleNavbar()" class="text-white text-2xl focus:outline-none hover:text-amber-200 transition-colors">☰</button>
+      <nav id="navbar" class="hidden absolute top-full right-0 mt-2 text-white rounded-lg shadow-lg overflow-hidden z-50"
+           style="background: linear-gradient(to right, #0a1846, #07113a);">
+        <div class="flex flex-col w-40">
+          <a href="#" class="px-6 py-3 hover:bg-blue-900 border-b border-white/20 transition-colors">Home</a>
+          <a href="#" class="px-6 py-3 hover:bg-blue-900 border-b border-white/20 transition-colors">About</a>
+          <a href="#" class="px-6 py-3 hover:bg-blue-900 border-b border-white/20 transition-colors">Gallery</a>
+          <a href="#" class="px-6 py-3 hover:bg-blue-900 transition-colors">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Scripts -->
+  <script>
+    function toggleCityDropdown() {
+      const dropdown = document.getElementById("cityDropdown");
+      dropdown.classList.toggle("hidden");
+    }
+
+    function toggleNavbar() {
+      const navbar = document.getElementById("navbar");
+      navbar.classList.toggle("hidden");
+    }
+  </script>
+
+  <!-- Hero Section -->
+<!-- Hero Section -->
+<section class="w-full min-h-screen bg-cover bg-center mt-[64px] relative flex items-center justify-center" style="background-image:url('https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?cs=srgb&dl=pexels-pixabay-302769.jpg&fm=jpg');">
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <div class="max-w-6xl mx-auto px-4 relative z-10 text-center w-full">
+    <h1 class="text-xl sm:text-2xl md:text-3xl font-semibold text-white drop-shadow-lg mb-4 animate-float">Welcome to Odisha No.1 Property</h1>
+
+    <!-- Tabs -->
+    <div class="flex flex-wrap justify-center gap-5 text-sm sm:text-base font-medium mb-6 text-white">
+      <button class="hover:text-amber-300 transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-amber-300 after:transition-all after:duration-300">Buy</button>
+      <button class="hover:text-amber-300 transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-amber-300 after:transition-all after:duration-300">Rent</button>
+      <button class="hover:text-amber-300 transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-amber-300 after:transition-all after:duration-300">New Projects</button>
+      <button class="hover:text-amber-300 transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-amber-300 after:transition-all after:duration-300">PG</button>
+      <button class="hover:text-amber-300 transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-amber-300 after:transition-all after:duration-300">Plot</button>
+      <button class="hover:text-amber-300 transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-amber-300 after:transition-all after:duration-300">Commercial</button>
+      <button class="hover:text-amber-300 transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-amber-300 after:transition-all after:duration-300">Post Free Property Ad</button>
+    </div>
+
+    <!-- White Search Bar -->
+    <div class="flex flex-wrap items-center bg-white rounded-full shadow-lg p-2 gap-2 max-w-5xl w-full mx-auto justify-center">
+      <!-- Location -->
+<div class="flex items-center bg-white rounded-full px-4 py-2 gap-2 min-w-[200px] relative shadow-md">
+  <i class="fas fa-map-marker-alt text-gray-700"></i>
+  <input type="text" value="Bhubaneswar" id="selectedCity" readonly onclick="toggleCityDropdown2()" class="bg-transparent outline-none flex-1 text-gray-800 cursor-pointer" />
+  <i class="fas fa-chevron-down text-gray-600 cursor-pointer" onclick="toggleCityDropdown()"></i>
+
+  <!-- Dropdown list -->
+  <ul id="cityDropdown" class="absolute top-full left-0 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg hidden z-50">
+    <li onclick="selectCity('Cuttack')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Cuttack</li>
+    <li onclick="selectCity('Puri')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Puri</li>
+    <li onclick="selectCity('Rourkela')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Rourkela</li>
+    <li onclick="selectCity('Berhampur')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Berhampur</li>
+    <li onclick="selectCity('All Odisha')" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">All Odisha</li>
+  </ul>
+</div>
+
+      <!-- Property Type -->
+      <div class="flex items-center gap-2 px-4 py-2 min-w-[160px] bg-gray-100 rounded-full">
+        <i class="fas fa-home text-gray-700"></i>
+        <select class="bg-transparent outline-none text-gray-800">
+          <option>Flat</option>
+          <option>Villa</option>
+          <option>Plot</option>
+        </select>
+      </div>
+
+      <!-- Budget -->
+      <div class="flex items-center gap-2 px-4 py-2 min-w-[160px] bg-gray-100 rounded-full">
+        <i class="fas fa-rupee-sign text-gray-700"></i>
+        <select class="bg-transparent outline-none text-gray-800">
+          <option>Budget</option>
+          <option>Under ₹50L</option>
+          <option>₹50L - ₹1Cr</option>
+        </select>
+      </div>
+
+      <!-- Search Button -->
+      <button class="bg-amber-500 text-white font-semibold rounded-full px-6 py-2 flex items-center gap-2 hover:bg-amber-600 transition-all ml-auto">
+        <i class="fas fa-search"></i>
+        Search
+      </button>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Script -->
+  <script>
+    function toggleCityDropdown() {
+      const dropdown = document.getElementById("cityDropdown");
+      dropdown.classList.toggle("hidden");
+    }
+
+    function toggleNavbar() {
+      const nav = document.getElementById("navbar");
+      nav.classList.toggle("hidden");
+    }
+
+    document.addEventListener("click", function(event) {
+      const cityBtn = event.target.closest("[onclick='toggleCityDropdown()']");
+      const dropdown = document.getElementById("cityDropdown");
+      if (!dropdown.contains(event.target) && !cityBtn) {
+        dropdown.classList.add("hidden");
+      }
+
+      const navBtn = event.target.closest("[onclick='toggleNavbar()']");
+      const nav = document.getElementById("navbar");
+      if (!nav.contains(event.target) && !navBtn) {
+        nav.classList.add("hidden");
+      }
+    });
+
+   
+    
+  </script>
+
+  
+  <!-- Banner Section1 -->
+  <section class="py-20 text-center bg-gradient-to-b from-white to-gray-50" style=" background-image:url()">
+    <div class="container mx-auto px-4" data-aos="fade-up">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 relative inline-block">
+        <span class="relative z-10">Launching</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-700 mb-8">
+       All odisha mega properties expo-2025
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <button class="px-8 py-4 bg-black text-amber-300 border-2 border-amber-300 text-lg font-bold hover:bg-gray-900 hover:shadow-[0_0_20px_rgba(255,215,0,0.8)] transition-all duration-300 rounded-lg hover-scale">
+         200+ plotting projects
+        </button>
+        <button class="px-8 py-4 bg-black text-amber-300 border-2 border-amber-300 text-lg font-bold hover:bg-gray-900 hover:shadow-[0_0_20px_rgba(255,215,0,0.8)] transition-all duration-300 rounded-lg hover-scale">
+          Investment plots
+         </button>
+         <button class="px-8 py-4 bg-black text-amber-300 border-2 border-amber-300 text-lg font-bold hover:bg-gray-900 hover:shadow-[0_0_20px_rgba(255,215,0,0.8)] transition-all duration-300 rounded-lg hover-scale">
+          Exchange your property
+         </button>
+      </div>
+      <p class="mt-8 text-lg font-semibold text-gray-800 bg-amber-100 inline-block px-6 py-2 rounded-full shadow-sm">
+        100% genuine & certified plots "propertyodisha guarantee"
+      </p>
+    </div>
+  </section>
+
+  <!-- Form Section -->
+  <section class="flex flex-col md:flex-row min-h-screen">
+    <!-- Left Section -->
+    <div class="w-full md:w-3/5 p-6 md:p-16 flex items-center justify-center bg-gradient-to-br from-white to-gray-50">
+      <div class="max-w-xl text-center" data-aos="fade-right">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 relative inline-block">
+          <span class="relative z-10">WE ARE PROPERTY ODISHA TEAM WELCOME YOU</span>
+          <span class="absolute -bottom-2 left-0 w-full h-3 bg-brand-blue opacity-30 z-0"></span>
+        </h1>
+        <p class="text-xl text-gray-700 mb-8 italic">"Your future home is waiting. Let us help you find it"</p>
+        <div class="rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+          <img
+            src="https://i.pinimg.com/736x/37/32/9c/37329c61a4b8fd6417337495eecc4d0d.jpg"
+            alt="Property Team"
+            class="w-full h-auto object-cover"
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Section - Form -->
+    <div class="w-full md:w-2/5 p-6 md:p-16 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+      <div class="w-full max-w-md bg-gradient-to-br from-white to-gray-50 p-8 rounded-2xl shadow-xl border border-transparent hover:border-teal-100 transition-all duration-500 hover:shadow-2xl hover:-translate-y-[8px]" data-aos="fade-left">
+        <h3 class="text-xl font-semibold text-gray-800 mb-6 text-center">
+          Please leave your details and we will get in touch with you
+        </h3>
+
+        <form class="space-y-4">
+          <input
+            type="text"
+            placeholder="Name"
+            required
+            class="w-full p-3 border-2 border-gray-300 rounded-lg bg-white/70 focus:border-teal-500 focus:ring focus:ring-teal-200 transition-all duration-300"
+          >
+          <input
+            type="email"
+            placeholder="Email Address"
+            required
+            class="w-full p-3 border-2 border-gray-300 rounded-lg bg-white/70 focus:border-teal-500 focus:ring focus:ring-teal-200 transition-all duration-300"
+          >
+          <input
+            type="tel"
+            placeholder="Mobile Number"
+            required
+            class="w-full p-3 border-2 border-gray-300 rounded-lg bg-white/70 focus:border-teal-500 focus:ring focus:ring-teal-200 transition-all duration-300"
+          >
+          <textarea
+            placeholder="Message"
+            class="w-full p-3 border-2 border-gray-300 rounded-lg bg-white/70 focus:border-teal-500 focus:ring focus:ring-teal-200 transition-all duration-300 min-h-[100px]"
+          ></textarea>
+
+          <div class="flex items-start gap-2">
+            <input type="checkbox" id="consent" checked class="mt-1">
+            <label for="consent" class="text-xs text-gray-600">
+              I authorize company representatives to Call, SMS, Email or WhatsApp me about its products and offers.
+              This consent overrides any registration for DNC/NDNC.
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full py-3 bg-black text-amber-300 border-2 border-amber-300 rounded-lg font-semibold hover:bg-gray-900 hover:shadow-[0_0_15px_rgba(255,215,0,0.7)] transition-all duration-300 hover:scale-[1.02]"
+          >
+            SUBMIT
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner Section2 -->
+  <section class="py-20 text-center bg-gradient-to-r from-gray-900 to-brand-dark text-white">
+    <div class="container mx-auto px-4" data-aos="zoom-in">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-500">Exclusive Auction Offer</h1>
+      <p class="text-xl md:text-2xl mb-8">
+        Get Properties at Up to 50% Lower Price - 1st Time in Odisha!
+      </p>
+      <button class="px-8 py-4 bg-black text-amber-300 border-2 border-amber-300 rounded-full text-lg font-bold hover:bg-gray-900 hover:shadow-[0_0_20px_rgba(255,215,0,0.8)] transition-all duration-500 hover:scale-105 animate-pulse">
+        Click Here
+      </button>
+    </div>
+  </section>
+
+  <!-- Investment Properties Section -->
+  <section class="py-12 bg-gradient-to-r from-purple-800 to-red-500 text-white text-center">
+    <h1 class="text-3xl md:text-4xl font-bold mb-2 text-shadow">Investment Properties</h1>
+    <p class="text-lg">More than 100 properties in 5 years</p>
+  </section>
+
+  <section class="py-16 bg-white text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-16 relative inline-block" data-aos="fade-up">
+      <span class="relative z-10">Select Your Budget</span>
+      <span class="absolute -bottom-2 left-0 w-full h-3 bg-blue-200 opacity-50 z-0"></span>
+    </h2>
+
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-[10px] flex flex-col justify-center items-center h-64 border border-gray-200" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-2xl font-bold text-blue-800 mb-4">Under ₹20 Lakhs</h3>
+        <p class="text-gray-600 text-lg">Affordable plots in growing areas</p>
+      </div>
+      <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-[10px] flex flex-col justify-center items-center h-64 border border-gray-200" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-2xl font-bold text-blue-800 mb-4">₹20-40 Lakhs</h3>
+        <p class="text-gray-600 text-lg">Perfect for first-time investors</p>
+      </div>
+      <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-[10px] flex flex-col justify-center items-center h-64 border border-gray-200" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-2xl font-bold text-blue-800 mb-4">₹40-60 Lakhs</h3>
+        <p class="text-gray-600 text-lg">Spacious homes in key locations</p>
+      </div>
+      <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-[10px] flex flex-col justify-center items-center h-64 border border-gray-200" data-aos="fade-up" data-aos-delay="400">
+        <h3 class="text-2xl font-bold text-blue-800 mb-4">₹60-80 Lakhs</h3>
+        <p class="text-gray-600 text-lg">Luxury flats with great ROI</p>
+      </div>
+      <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-[10px] flex flex-col justify-center items-center h-64 border border-gray-200" data-aos="fade-up" data-aos-delay="500">
+        <h3 class="text-2xl font-bold text-blue-800 mb-4">₹80L-1Cr</h3>
+        <p class="text-gray-600 text-lg">Premium city-center apartments</p>
+      </div>
+      <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-[10px] flex flex-col justify-center items-center h-64 border border-gray-200" data-aos="fade-up" data-aos-delay="600">
+        <h3 class="text-2xl font-bold text-blue-800 mb-4">Above ₹1Cr</h3>
+        <p class="text-gray-600 text-lg">Elite villas and gated communities</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities Section -->
+  <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+    <div class="container mx-auto px-4 text-center">
+      <h5 class="uppercase tracking-wider text-sm font-medium mb-3 text-gray-500" data-aos="fade-up">World Class Amenities</h5>
+      <h2 class="mb-16" data-aos="fade-up" data-aos-delay="100">
+        <span class="font-serif italic text-6xl text-indigo-950">Luxury</span>
+        <span class="font-sans text-3xl text-amber-700 ml-2">Properties</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-[5px] group" data-aos="fade-up" data-aos-delay="200">
+          <div class="h-64 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1692533436217-d888f542cffa" alt="Luxury Flat" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div class="p-4 text-white">
+                <p class="font-semibold">Starting from ₹45L</p>
+              </div>
+            </div>
+          </div>
+          <p class="py-4 font-semibold uppercase text-center">Luxury Flat</p>
+        </div>
+        <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-[5px] group" data-aos="fade-up" data-aos-delay="300">
+          <div class="h-64 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1735586577700-44d33070403a" alt="Luxury Villas" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div class="p-4 text-white">
+                <p class="font-semibold">Starting from ₹1.2Cr</p>
+              </div>
+            </div>
+          </div>
+          <p class="py-4 font-semibold uppercase text-center">Luxury Villas</p>
+        </div>
+        <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-[5px] group" data-aos="fade-up" data-aos-delay="400">
+          <div class="h-64 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1623189184588-967ac9f6fd7f" alt="Luxury Holiday Home" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div class="p-4 text-white">
+                <p class="font-semibold">Starting from ₹80L</p>
+              </div>
+            </div>
+          </div>
+          <p class="py-4 font-semibold uppercase text-center">Luxury Holiday Home</p>
+        </div>
+        <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-[5px] group" data-aos="fade-up" data-aos-delay="500">
+          <div class="h-64 relative overflow-hidden">
+            <img src="https://i.pinimg.com/736x/c1/71/94/c171946f63dc4f9c194ca6ec163ae0af.jpg" alt="Farmhouse Vilas" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div class="p-4 text-white">
+                <p class="font-semibold">Starting from ₹1.5Cr</p>
+              </div>
+            </div>
+          </div>
+          <p class="py-4 font-semibold uppercase text-center">Farmhouse Vilas (Special)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Property Categories Section -->
+  <section class="py-24 bg-gradient-to-b from-gray-50 to-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-16 text-gray-800 leading-tight" data-aos="fade-up">Explore Property Categories</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <!-- Card -->
+        <div class="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer bg-white/60 backdrop-blur-md" data-aos="fade-up" data-aos-delay="100">
+          <div class="h-56 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1612637968894-660373e23b03" alt="Apartment" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80"></div>
+          </div>
+          <h3 class="py-6 text-center text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Apartment</h3>
+        </div>
+
+        <!-- Card -->
+        <div class="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer bg-white/60 backdrop-blur-md" data-aos="fade-up" data-aos-delay="200">
+          <div class="h-56 relative overflow-hidden">
+            <img src="https://i.pinimg.com/736x/9a/39/e1/9a39e1ed16bb8ebf01219e890fa47a52.jpg" alt="Duplex/Individual House" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80"></div>
+          </div>
+          <h3 class="py-6 text-center text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Duplex/Individual House</h3>
+        </div>
+
+        <!-- Card -->
+        <div class="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer bg-white/60 backdrop-blur-md" data-aos="fade-up" data-aos-delay="300">
+          <div class="h-56 relative overflow-hidden">
+            <img src="https://i.pinimg.com/736x/9c/96/82/9c9682409d64a94d7367525dc04ef333.jpg" alt="Land/Plot" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80"></div>
+          </div>
+          <h3 class="py-6 text-center text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Land/Plot</h3>
+        </div>
+
+        <!-- Card -->
+        <div class="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer bg-white/60 backdrop-blur-md" data-aos="fade-up" data-aos-delay="400">
+          <div class="h-56 relative overflow-hidden">
+            <img src="https://i.pinimg.com/736x/8e/15/3a/8e153a10f5bbdce4b8fafa39db675d35.jpg" alt="Commercial Properties" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80"></div>
+          </div>
+          <h3 class="py-6 text-center text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Commercial Properties</h3>
+        </div>
+
+        <!-- Card -->
+        <div class="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer bg-white/60 backdrop-blur-md" data-aos="fade-up" data-aos-delay="500">
+          <div class="h-56 relative overflow-hidden">
+            <img src="https://i.pinimg.com/736x/6e/6d/57/6e6d574e81755a0a328f25f320f7b67e.jpg" alt="Ready to Move Properties" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80"></div>
+          </div>
+          <h3 class="py-6 text-center text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Ready to Move Properties</h3>
+        </div>
+
+        <!-- Card -->
+        <div class="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer bg-white/60 backdrop-blur-md" data-aos="fade-up" data-aos-delay="600">
+          <div class="h-56 relative overflow-hidden">
+            <img src="https://i.pinimg.com/736x/00/ca/4d/00ca4d9fee5578bab0a82e69f5b95d92.jpg" alt="Under Construction Properties" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80"></div>
+          </div>
+          <h3 class="py-6 text-center text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Under Construction Properties</h3>
+        </div>
+
+        <!-- Card -->
+        <div class="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer bg-white/60 backdrop-blur-md" data-aos="fade-up" data-aos-delay="700">
+          <div class="h-56 relative overflow-hidden">
+            <img src="https://i.pinimg.com/736x/28/8b/aa/288baa72a408e4d8054cf17bdb804107.jpg" alt="PreLaunch Properties" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80"></div>
+          </div>
+          <h3 class="py-6 text-center text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">PreLaunch Properties</h3>
+        </div>
+
+        <!-- Card -->
+        <div class="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer bg-white/60 backdrop-blur-md" data-aos="fade-up" data-aos-delay="800">
+          <div class="h-56 relative overflow-hidden">
+            <img src="https://i.pinimg.com/736x/04/07/6e/04076eef421ede1997b544e54e23a91e.jpg" alt="Resale Properties" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-80"></div>
+          </div>
+          <h3 class="py-6 text-center text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">Resale Properties</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="bg-gradient-to-r from-gray-900 to-brand-dark text-white pt-16 pb-8">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <!-- Company Info -->
+        <div>
+          <div class="flex items-center mb-6">
+            <img src="logo.jpg" alt="Property Odisha Logo" class="w-12 h-12 rounded-full mr-3">
+            <h3 class="text-xl font-bold text-amber-300">Property Odisha</h3>
+          </div>
+          <p class="text-gray-300 mb-6">Your trusted partner in finding the perfect property across Odisha. With over 5 years of experience and 100+ successful deals.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-300 hover:text-amber-300 transition-colors">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-gray-300 hover:text-amber-300 transition-colors">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-300 hover:text-amber-300 transition-colors">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-300 hover:text-amber-300 transition-colors">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-6 text-amber-300">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors hover:pl-2 duration-300 block">Home</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors hover:pl-2 duration-300 block">About Us</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors hover:pl-2 duration-300 block">Properties</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors hover:pl-2 duration-300 block">Services</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors hover:pl-2 duration-300 block">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Property Types -->
+        <div>
+          <h4 class="text-lg font-semibold mb-6 text-amber-300">Property Types</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors hover:pl-2 duration-300 block">Apartments</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors hover:pl-2 duration-300 block">Villas</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors hover:pl-2 duration-300 block">Plots</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors hover:pl-2 duration-300 block">Commercial</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors hover:pl-2 duration-300 block">Farmhouses</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-lg font-semibold mb-6 text-amber-300">Contact Us</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mt-1 mr-3 text-amber-300"></i>
+              <span class="text-gray-300">123 Property Plaza, Bhubaneswar, Odisha - 751001</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone-alt mr-3 text-amber-300"></i>
+              <span class="text-gray-300">+91 98765 43210</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-envelope mr-3 text-amber-300"></i>
+              <span class="text-gray-300">info@propertyodisha.com</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-clock mr-3 text-amber-300"></i>
+              <span class="text-gray-300">Mon-Sat: 9:00 AM - 7:00 PM</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 mt-12 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Property Odisha. All rights reserved.</p>
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-400 hover:text-amber-300 text-sm transition-colors">Privacy Policy</a>
+            <a href="#" class="text-gray-400 hover:text-amber-300 text-sm transition-colors">Terms of Service</a>
+            <a href="#" class="text-gray-400 hover:text-amber-300 text-sm transition-colors">Sitemap</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS Animation Script -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100
+    });
+    
+    function toggleNavbar() {
+      const navbar = document.getElementById('navbar');
+      navbar.style.display = navbar.style.display === 'block' ? 'none' : 'block';
+    }
+    
+    // Slide section
+    function scrollLeft() {
+      document.getElementById('carousel').scrollBy({
+        left: -300,
+        behavior: 'smooth'
+      });
+    }
+    
+    function scrollRight() {
+      document.getElementById('carousel').scrollBy({
+        left: 300,
+        behavior: 'smooth'
+      });
+    }
+    
+    function toggleCityDropdown() {
+      const dropdown = document.getElementById("cityDropdown");
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    }
+    
+  </script>
+</body>
+</html>
